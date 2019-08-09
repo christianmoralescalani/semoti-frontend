@@ -1,0 +1,101 @@
+.contenedor{
+  padding: 15px;
+  margin-top: 10px;
+}
+button{
+  background: #1565c0;
+  color: white;
+}
+.titulo{
+    background: #0d47a1;
+    text-align: center;
+    margin-bottom: 15px;
+    border-bottom: 1px solid black;
+  }
+  label{
+    color: white;
+  }
+  .centro{
+    background: #0d47a1;
+    height: 100vh;
+  }
+  .derecha{
+    background: #0d47a1;
+    height: 100vh;
+    
+  }
+  .izquierda{
+    background: #0d47a1;
+    height: 100vh;
+    
+  }
+  .categorias,.citas,.resumen,.entidades,.conceptos,.expresiones,.containerCentro{
+    height: 70%;
+    margin-bottom: 25px;
+    overflow: auto;
+  }
+  .categoria,.cita{
+    background: #0d47a1;
+    color : white;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    border: 1px solid black;
+    border-radius: 25px;
+  }
+  .categorias::-webkit-scrollbar,.citas::-webkit-scrollbar,.resumen::-webkit-scrollbar,.entidades::-webkit-scrollbar,.conceptos::-webkit-scrollbar,.expresiones::-webkit-scrollbar,.containerCentro::-webkit-scrollbar{
+    width: 3px;
+  }
+  .categorias::-webkit-scrollbar-thumb,.citas::-webkit-scrollbar-thumb,.resumen::-webkit-scrollbar-thumb,.entidades::-webkit-scrollbar-thumb,.conceptos::-webkit-scrollbar-thumb,.expresiones::-webkit-scrollbar-thumb,.containerCentro::-webkit-scrollbar-thumb{
+    background: #1a237e;
+  }
+  ::-webkit-scrollbar{
+    width: 3px;
+  }
+  ::-webkit-scrollbar-thumb{
+    background: #1a237e;
+  }
+  .relevancia{
+    display: block;
+    float: right;
+    }
+  .resu{
+    background:  #0d47a1;
+    color: white;
+    border: 1px solid black;
+  }
+  .entidad,.concepto,.expresion{
+    color: white;
+    border: 1px solid black;
+    background:#0d47a1 ;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    border-radius: 25px;
+  }
+  img{
+    display: block;
+    margin: auto;
+    margin-top: 25px;
+  }
+  .container{
+    background:#0d47a1 ;
+    color: white;
+    margin-top: 15px;
+    width: 100%;
+    padding: 15px;
+    
+  }
+  .titulo,h5{
+    color: white;
+  }
+  .botonesModal>button{
+    width: 100%;
+    margin-top: 10px;
+  }
+  .modal-content,.modal,.modal-footer{
+    background: #0d47a1;
+    
+  }
+  .modal-close{
+    color: white;
+  }
+  

@@ -1,0 +1,56 @@
+<app-header></app-header>
+<div class="container2">
+  <div class="row">
+    <div class="input-field col l4 s12">
+      <input #palabras id="last_name" type="text" class="validate">
+      <label for="last_name">Palabras Clave</label>
+    </div>
+    <div class="input-field col l4 s6">
+      <button class="btn  waves-effect waves-light" (click)="ObtenerNoticias(palabras.value)">buscar</button>
+    </div>
+    <div class="input-field col l4 s6">
+      <a class=" boton waves-effect waves-light btn modal-trigger" href="#modal1">Ver consulta</a>
+    </div>
+  </div>
+</div>
+<div class="container3 noticiasEncontradas">
+  <ul class="collapsible">
+    <li *ngFor="let noti of noticias,let num=index">
+      <div class="collapsible-header">
+      
+        <a routerLink="/Estructurar/{{noti.noticia.properties.id}}">{{noti.noticia.properties.name}} {{noti.noticia.properties.fecha}}</a> 
+        
+      </div>
+      <div class="collapsible-body"><span>
+          <table class="centered">
+            <thead>
+              <tr>
+                <th class="white-text">Palabra</th>
+                <th class="white-text">Contexto</th>
+                
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr *ngFor="let nodoa of noti.nodoA,let i = index">
+                <td class="white-text">{{nodoa.properties.name}} ({{nodoa.labels[0]}})</td>
+                <td class="white-text">{{noti.nodoB[i].properties.name}} ({{noti.nodoB[i].labels[0]}})</td>
+               
+              </tr>
+
+            </tbody>
+          </table>
+        </span></div>
+    </li>
+
+  </ul>
+  <!-- Modal Structure -->
+  <div id="modal1" class="modal">
+    <div class="modal-content">
+      <h4>CONSULTA SEMÁNTICA</h4>
+      <p>{{consulta}}</p>
+    </div>
+    <div class="modal-footer">
+      <button class="modal-close waves-effect waves-green btn-flat">Cerrar</button>
+    </div>
+  </div>

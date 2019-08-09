@@ -1,0 +1,12 @@
+
+h1,label,input{
+    color: white;
+}
+
+.sidenav>li>a{
+    color: white;
+}
+.sidenav{
+    background: #0d47a1;
+    
+}

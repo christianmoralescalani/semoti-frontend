@@ -1,0 +1,113 @@
+<app-header></app-header>
+
+<div id="modal1" class="modal no-autoinit blue darken-4 white-text">
+        <div class="modal-content">
+          <h4 class="center-align">{{ noticiaActual.titulo }}</h4>
+          <p>Fecha de Obtención: {{ noticiaActual.fecha }}</p>
+          <p>Fuente: {{ noticiaActual.fuente }}</p>
+          <img
+            class="fotomodal"
+            src="https://www.questionpro.com/blog/wp-content/uploads/2017/08/tamanomuestra_cov-800x533.jpg"
+            alt="foto"
+          />
+      
+          <p>{{ noticiaActual.cuerpo }}</p>
+        </div>
+        <div class="modal-footer blue darken-4 " >
+          <a  class="modal-close waves-effect waves-green btn-flat white-text">Cerrar</a>
+        </div>
+      </div>
+
+<div class="row container ">
+  <div class="col s12">
+    <button
+      data-target="slide-out"
+      class="sidenav-trigger btn  blue accent-4"
+      style="margin-top:15px"
+    >
+      Abrir Panel de Busqueda
+    </button>
+  </div>
+  <div class="col s4">
+    <p>Número de noticias: {{ numeroNoticias }}</p>
+  </div>
+  <div class="col s4">
+    <p>Total de Noticias Almacenadas: {{numeroTotalNoticias}}</p>
+  </div>
+  <div class="col s4">
+    <p>Fecha Actual: {{ date2 }}</p>
+  </div>
+</div>
+
+<div class="bg ">
+  <div class="row contenedor-noticias ">
+    <div class="col m4 s12 noticia" *ngFor="let noticia of noticiasObtenidas">
+      <div class="borde z-depth-5" [ngStyle]="{ 'background-image': getUrl() }">
+        <div class="row">
+          <div class="col s12">
+            <div class="info">
+              <p class="center-align">
+                <b> {{ noticia.titulo }}</b>
+              </p>
+            </div>
+          </div>
+          <div class="col s6">
+            <button (click)="MostrarNoticiaOriginal(noticia._id)" class="btn ">
+              Previsualizar
+            </button>
+          </div>
+          <div class="col s6">
+            <button routerLink="/Estructurar/{{noticia._id}}" class="btn ">
+              Estructurar
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<ul id="slide-out" class="sidenav blue darken-4">
+  <li class="white-text center-align" style="font-size: 25px; margin-top:15px">
+    <span class="white-text"
+      ><i class="material-icons medium">fiber_smart_record</i></span
+    >SEMOTI
+  </li>
+  <form   class="lateral">
+    <li>
+      <div class="input-field col s12">
+        <input
+          value="Sin Fecha"
+          name="calendario"
+          #fecha
+          id="calendario"
+          type="text"
+          class="datepicker no-autoinit "
+        />
+      </div>
+    </li>
+    <li>
+      <div class="input-field col s12">
+        <button class="btn btn-panel" (click)="SinFecha(fecha)">Sin Fecha</button>
+      </div>
+    </li>
+    <li>
+      <div class="input-field col s12">
+        <select #fuente name="fuente" class="white-text">
+          <option value="TODOS"  selected>TODOS</option>
+          <option value="PAGINA 7">PAGINA 7</option>
+          <option value="ABI">ABI</option>
+          <option value="BOLPRESS">BOLPRESS</option>
+        </select>
+        
+      </div>
+    </li>
+    <li>
+      <div class="input-field col s12">
+        <button class="btn btn-panel sidenav-close" (click)="BuscarConCondiciones(fecha,fuente)">BUSCAR</button>
+      </div>
+    </li>
+  </form>
+</ul>

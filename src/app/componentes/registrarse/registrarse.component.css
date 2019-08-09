@@ -1,0 +1,11 @@
+.bg{
+    width: 100%;
+    height: 100vh;
+}
+h4,p,label,input{
+    color: white;
+}
+button{
+    width: 100%;
+}
+

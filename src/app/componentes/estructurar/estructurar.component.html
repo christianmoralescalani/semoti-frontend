@@ -1,0 +1,187 @@
+<app-header></app-header>
+<div class="contenedor">
+    <div class="col s6 hide-on-large-only botonesModal">
+      <button data-target="modal1" class="btn modal-trigger">Seccion Periodico</button>
+      <button data-target="modal2" class="btn modal-trigger">Sugerencia de Titulos</button>
+      <button data-target="modal3" class="btn modal-trigger">Sugerencia de Lead</button>
+      <button data-target="modal4" class="btn modal-trigger">Entidades Encontradas</button>
+      <button data-target="modal5" class="btn modal-trigger">Conceptos Encontrados</button>
+      <button data-target="modal6" class="btn modal-trigger">EXPRESIONES ENCONTRADAS</button>
+    </div>
+    <div class="row">
+      <div class="col s12 titulo">
+        <h5>{{noticia.titulo}}</h5>
+      </div>
+  
+      <div class="col l3  derecha hide-on-med-and-down">
+        <div class="input-field col s12">
+          <select #opcion1 (change)="AlternarDerecha(opcion1.value)">
+            <option value="1" selected>SECCION PERIODICO</option>
+            <option value="2">SUGERENCIA DE TITULOS</option>
+            <option value="3">SUGERENCIA DE LEADS</option>
+          </select>
+          <label>SUGERENCIA ACERCA DE LA NOTICIA</label>
+        </div>
+        <div class="col s12 categorias">
+          <div class="container2">
+            <div class="col s12 categoria z-depth-3" *ngFor="let categoria of categorias">
+              <p>{{categoria.categoria}} <span class="right-align  relevancia">{{categoria.relevancia}}%</span></p>
+            </div>
+          </div>
+        </div>
+        <div class="col s12 citas hide">
+          <div class="container2">
+            <div class="col s12 cita z-depth-5" *ngFor="let cita of citas">
+              <p>{{cita.cita | uppercase}}</p>
+            </div>
+          </div>
+        </div>
+        <div class="col s12 resumen hide">
+          <div class="container2">
+            <div class="col s12 resu z-depth-3">
+              <p>{{noticia.resumen}}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col l6 s12 centro">
+        <div class="containerCentro">
+          <img src="{{noticia.foto}}" height="250px" width="250px" class="materialboxed responsive-img">
+          <div class="container">
+            <p>Fuente: {{noticia.fuente}} <span class="relevancia ">Extraido el: {{noticia.fecha}}</span></p>
+            <p>{{noticia.cuerpo}}</p>
+          </div>
+        </div>
+      </div>
+      <div class="col l3  izquierda hide-on-med-and-down">
+        <div class="input-field col s12">
+          <select #opcion (change)="AlternarIzquierda(opcion.value)">
+            <option value="1" selected>ENTIDADES ENCONTRADAS</option>
+            <option value="2">CONCEPTOS ENCONTRADOS</option>
+            <option value="3">EXPRESIONES ENCONTRADAS</option>
+          </select>
+          <label>METADATOS</label>
+        </div>
+        <div class="col s12 entidades">
+          <div class="container2">
+            <div class="col s12 entidad z-depth-3" *ngFor="let entidad of entidades">
+              
+              <p>{{entidad.entidad}} </p>
+              <p class="">Contexto <span class="relevancia">{{entidad.categoria}}</span></p>
+              <p>Relevancia: {{entidad.relevancia}}%</p>
+            </div>
+          </div>
+        </div>
+        <div class="col s12 conceptos hide">
+          <div class="container2">
+            <div class="col s12 concepto z-depth-3" *ngFor="let concepto of conceptos">
+              <p>{{concepto.concepto}}</p>
+              <p>Contexto <span class="relevancia">{{concepto.categoria}}</span></p>
+              <p>Relevancia: {{concepto.relevancia}}%</p>
+            </div>
+          </div>
+        </div>
+        <div class="col s12 expresiones hide">
+          <div class="container2">
+            <div class="col s12 expresion z-depth-3" *ngFor="let expresion of expresiones">
+              <p>{{expresion.expresion}}</p>
+              <p>Contexto <span class="relevancia">{{expresion.categoria}}</span></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- MODALES -->
+  <!-- Seccion Periodico Responsive-->
+  <div id="modal1" class="modal categorias">
+    <div class="modal-content ">
+      <div class="container2 ">
+        <h5 class="center-align">SECCION PERIODICO</h5>
+        <div class="col s12 categoria center-align  z-depth-3" *ngFor="let categoria of categorias">
+          <p>{{categoria.categoria}}</p>
+          <P class=" ">{{categoria.relevancia}}%</P>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <a class="modal-close waves-effect waves-green btn-flat">Cerrar</a>
+    </div>
+  </div>
+  <!--Sugerencia de Titulos Responsive-->
+  <div id="modal2" class="modal citas">
+    <div class="modal-content ">
+      <div class="container2">
+        <h5 class="center-align">SUGERENCIA DE TITULOS</h5>
+        <div class="col s12 cita z-depth-5 center-align" *ngFor="let cita of citas">
+          <p>{{cita.cita | uppercase}}</p>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <a class="modal-close waves-effect waves-green btn-flat">Cerrar</a>
+    </div>
+  </div>
+  <!--Sugerencia de Lead Responsive-->
+  <div id="modal3" class="modal resumen">
+    <div class="modal-content ">
+      <div class="container2">
+        <h5 class="center-align">Sugerencia de Lead</h5>
+        <div class="col s12 resu z-depth-3">
+          <p>{{noticia.resumen}}</p>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <a class="modal-close waves-effect waves-green btn-flat">Cerrar</a>
+    </div>
+  </div>
+  <!--Entidades Encontradas Responsive-->
+  <div id="modal4" class="modal entidades">
+    <div class="modal-content ">
+      <div class="container2 center-align">
+        <h5 class="center-align">ENTIDADES ENCONTRADAS</h5>
+        <div class="col s12 entidad z-depth-3" *ngFor="let entidad of entidades">
+          
+          <p>{{entidad.entidad}} </p>
+          <p class="">Contexto <span class="">{{entidad.categoria}}</span></p>
+          <p>Relevancia: {{entidad.relevancia}}%</p>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <a class="modal-close waves-effect waves-green btn-flat">Cerrar</a>
+    </div>
+  </div>
+  <!--Conceptos Encontrados Responsive-->
+  <div id="modal5" class="modal conceptos">
+    <div class="modal-content ">
+      <div class="container2 center-align">
+        <h5>CONCEPTOS ENCONTRADOS</h5>
+        <div class="col s12 concepto z-depth-3" *ngFor="let concepto of conceptos">
+          <p>{{concepto.concepto}}</p>
+          <p>Contexto <span class="">{{concepto.categoria}}</span></p>
+          <p>Relevancia: {{concepto.relevancia}}%</p>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <a class="modal-close waves-effect waves-green btn-flat">Cerrar</a>
+    </div>
+  </div>
+  <!--Expresiones Encontradas Responsive-->
+  <div id="modal6" class="modal expresiones">
+    <div class="modal-content ">
+      <div class="container2 center-align">
+        <h5>EXPRESIONES ENCONTRADAS</h5>
+        <div class="col s12 expresion z-depth-3" *ngFor="let expresion of expresiones">
+          <p>{{expresion.expresion}}</p>
+          <p>Contexto <span class="">{{expresion.categoria}}</span></p>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <a class="modal-close waves-effect waves-green btn-flat">Cerrar</a>
+    </div>
+  </div>
+

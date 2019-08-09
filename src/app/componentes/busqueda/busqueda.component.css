@@ -1,0 +1,50 @@
+.container2{
+    background: rgba(0,0,0,.3);
+    margin: 5px;
+    margin-top: 10px;
+    padding: 15px;
+  }
+.container3{
+    padding: 15px;
+}
+  td>a{
+    color: black;
+  }
+  .nodos{
+    background:white;
+  }
+  .noticiasEncontradas{
+    height: 50vh;
+    overflow: auto;
+  }
+  input,input:focus{
+  width: 100%;
+    color: white;
+    text-align: center;
+  }
+  label{
+    color: white;
+  }
+  button,.boton,button:focus{
+    background: #1565c0 ;
+    color: white;
+    margin-top: 8px;
+    width: 100%;
+  }
+  button:hover,.boton:hover{
+    background: #1565c0 ;
+    color: #000;
+  }
+  .collapsible-header{
+    background:#0d47a1 ;
+  }
+  .collapsible-header>a{
+    color:white;
+  }
+  .noticiasEncontradas::-webkit-scrollbar{
+    width: 10px;
+  }
+  .noticiasEncontradas::-webkit-scrollbar-thumb{
+    background: #0d47a1 ;
+  }
+  
