@@ -11,6 +11,22 @@ import { HeaderComponent } from './componentes/header/header.component';
 import { EstructurarComponent } from './componentes/estructurar/estructurar.component';
 import { BusquedaComponent } from './componentes/busqueda/busqueda.component';
 
+import { SocialLoginModule, AuthServiceConfig } from "angularx-social-login";
+import { GoogleLoginProvider, FacebookLoginProvider } from "angularx-social-login";
+let config = new AuthServiceConfig([
+  {
+    id: GoogleLoginProvider.PROVIDER_ID,
+    provider: new GoogleLoginProvider("555023444646-esk7pg51dicria4uml67a8qsaoa7nmrd.apps.googleusercontent.com")
+  },
+  {
+    id: FacebookLoginProvider.PROVIDER_ID,
+    provider: new FacebookLoginProvider("1102856176586432")
+  }
+]);
+ 
+export function provideConfig() {
+  return config;
+}
 
 
 @NgModule({
@@ -29,9 +45,13 @@ import { BusquedaComponent } from './componentes/busqueda/busqueda.component';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    SocialLoginModule
   ],
-  providers: [],
+  providers: [{
+    provide: AuthServiceConfig,
+    useFactory: provideConfig
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

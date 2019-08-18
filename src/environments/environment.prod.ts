@@ -1,3 +1,5 @@
 export const environment = {
-  production: true
+  production: true,
+  backend_url: 'http://localhost:3000',
+  neo4_url: 'http://localhost:7474'
 };

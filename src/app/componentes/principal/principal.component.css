@@ -15,15 +15,17 @@ button{
 }
 
 img{
-   
-    width: 50%;
-    height: 50%;
-    display: block;
-    margin: auto;
+    
+   display: block;
+   margin: auto;
+    
 }
 .info{
    
-    margin-top: 200px;
+    
+}
+input{
+    color: white;
 }
 
 .info>p:first-child{
@@ -32,11 +34,13 @@ img{
    
 }
 .borde{
+    height: 200px;
     margin-top: 25px;
     color: white;
     opacity: 0.8;
     background-repeat: no-repeat;
-   
+    background-position: center;
+    background-size: 100%;
    
     padding: 15px;
 }

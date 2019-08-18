@@ -1,15 +1,15 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-
+import {environment} from '../../environments/environment.prod' ;
 @Injectable({
   providedIn: 'root'
 })
 export class NoticiasService {
-  NOTICIAS_FECHA_URL: string = 'http://192.168.137.7:3000/noticias/fecha/';
-  NOTICIA_ORIGINAL: string = 'http://192.168.137.7:3000/noticias/noticiaOriginal/';
-  NOTICIA_FECHA_FUENTE: string = 'http://192.168.137.7:3000/noticias/';
-  CANTIDAD_NOTICIAS: string = 'http://192.168.137.7:3000/noticias/cantidadNoticias';
-  NOTICIA_SEMANTICA_GENERAL: string = 'http://192.168.137.7:3000/semantica/';
+  NOTICIAS_FECHA_URL: string = `${environment.backend_url}/noticias/fecha/`;
+  NOTICIA_ORIGINAL: string = `${environment.backend_url}/noticias/noticiaOriginal/`;
+  NOTICIA_FECHA_FUENTE: string = `${environment.backend_url}/noticias/`;
+  CANTIDAD_NOTICIAS: string = `${environment.backend_url}/noticias/cantidadNoticias/`;
+  NOTICIA_SEMANTICA_GENERAL: string = `${environment.backend_url}/semantica/`;
 
   constructor(private http: HttpClient) { }
 
@@ -94,7 +94,8 @@ export interface noticia {
   fuente: string,
   fecha: string,
   foto: string,
-  etiquetado?: boolean
+  etiquetado?: boolean,
+  resumen:string
 }
 export interface categoria {
   categoria: string,

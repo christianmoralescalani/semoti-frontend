@@ -11,8 +11,8 @@
       <ul class="right hide-on-med-and-down">
         <li><a routerLink="/Principal">Noticias</a></li>
         <li><a routerLink="/Busqueda">Búsqueda de Noticias</a></li>
-        <li><a href="http://192.168.137.7:7474" target="_blank">Vista en Grafo</a></li>
-        
+        <li><a href="{{url}}" target="_blank">Vista en Grafo</a></li>
+        <li><a (click)="CerrarSesion()">Cerrar Sesion</a></li>
         
       </ul>
     </div>
@@ -22,7 +22,7 @@
   <ul class="sidenav " id="mobile-demo">
     <li><a routerLink="/Principal">Noticias</a></li>
     <li><a routerLink="/Busqueda">Búsqueda de Noticias</a></li>
-    <li><a href="http://192.168.137.7:7474" target="_blank">Vista en Grafo</a></li>
+    <li><a href="{{url}}" target="_blank">Vista en Grafo</a></li>
     
   </ul>
   </div>

@@ -15,7 +15,7 @@ export class RegistrarseComponent implements OnInit {
   ngOnInit() {
     M.AutoInit();
   }
-  async Ver(form: FormControl) {
+  async Ver(form) {
     if (!form.valid) {
       M.toast({ html: 'Todos los campos son requeridos' });
     } else 

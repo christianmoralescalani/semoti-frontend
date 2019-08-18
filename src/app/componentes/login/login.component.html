@@ -18,13 +18,23 @@
                         <label for="contrasena">Contrasena</label>
                     </div>
                     <div class="input-field col l6 s12  ">
-                        <button (click)="IniciarSesion(form)" class="btn waves-effect waves-light teal darken-4" type="button" name="action">
+                        <button (click)="IniciarSesion(form)" class="btn waves-effect waves-light green" type="button" name="action">
                             Iniciar Sesión
                         </button>
                     </div>
                     <div class="input-field col l6 s12  ">
-                        <a class="btn waves-effect waves-light red darken-3" routerLink="/Registrarse" name="action">
+                        <a class="btn waves-effect waves-light orange darken-3" routerLink="/Registrarse" name="action">
                             Registrarse
+                        </a>
+                    </div>
+                    <div class="input-field col l6 s12  ">
+                        <a class="btn waves-effect waves-light blue darken-3" (click)="Facebook()" name="action">
+                            FACEBOOK
+                        </a>
+                    </div>
+                    <div class="input-field col l6 s12  ">
+                        <a class="btn waves-effect waves-light red darken-3" (click)="Google()" name="action">
+                            GOOGLE
                         </a>
                     </div>
                 </div>
@@ -32,3 +42,4 @@
         </div>
     </div>
 </div>
+

@@ -23,31 +23,37 @@ export class PrincipalComponent implements OnInit {
       //$('.sidenav').sidenav();
       $('#modal1').modal();
       $('.datepicker').datepicker({
-        container:document.getElementsByClassName('bg'),
+        container: document.getElementsByClassName('bg'),
         format: 'dd-mm-yyyy'
       });
-      
+      //$('select').formSelect();
 
     });
     this.ObtenerNoticiasDia();
     this.CantidadNoticias();
 
   }
-  getUrl() {
-    return "url('https://www.paginasiete.bo/u/fotografias/m/2019/8/7/f800x450-275309_326755_66.jpg')";
+   getUrl(foto) {
+    return `url(${foto})`;
   }
-  SinFecha(calendario){
-      calendario.value = 'Sin Fecha';
+  SinFecha(calendario) {
+    calendario.value = 'Sin Fecha';
   }
   async ObtenerNoticiasDia() {
     const res = await this.noticias.NoticiasFecha(this.date2);
     res.subscribe((data: respuestaNoticia) => {
-      this.noticiasObtenidas = <noticia[]>data.mensaje;
-      this.numeroNoticias = data.mensaje.length;
+      
+      if (data.status == 'Error') {
+        M.toast({ html: `${data.mensaje}` });
+      } else {
+        this.noticiasObtenidas = <noticia[]>data.mensaje;
+        this.numeroNoticias = data.mensaje.length;
+      }
+
     });
   }
   async MostrarNoticiaOriginal(id: string) {
-    
+
     $('#modal1').modal('open');
     const res = await this.noticias.NoticiaOriginal(id);
     res.subscribe((data: respuestaNoticia2) => {
@@ -58,30 +64,31 @@ export class PrincipalComponent implements OnInit {
 
   }
 
-  async BuscarConCondiciones(fecha,fuente){
-    const res = await this.noticias.NoticiaFechaFuente(fecha.value,fuente.value) ;
-    res.subscribe((data:respuestaNoticia)=>{
-      if(data.status == "Correcto"){
+  async BuscarConCondiciones(fecha, fuente) {
+    const res = await this.noticias.NoticiaFechaFuente(fecha.value, fuente.value);
+    res.subscribe((data: respuestaNoticia) => {
+      if (data.status == "Correcto") {
         this.noticiasObtenidas = <noticia[]>data.mensaje;
         this.numeroNoticias = data.mensaje.length;
-      }else{
+      } else {
         this.noticiasObtenidas = [];
         this.numeroNoticias = 0;
-        M.toast({html:`${data.mensaje}`});
+
+        M.toast({ html: `${data.mensaje}` });
       }
-     
+
     })
-    
+
   }
-  async CantidadNoticias(){
+  async CantidadNoticias() {
     const resp = await this.noticias.CantidadNoticias();
-    resp.subscribe((data:respuestaNoticia)=>{
-      if(data.status = 'Correcto'){
+    resp.subscribe((data: respuestaNoticia) => {
+      if (data.status = 'Correcto') {
         this.numeroTotalNoticias = <string>data.mensaje
-      }else{
+      } else {
         this.numeroTotalNoticias = '--';
       }
-      
+
     });
   }
 
