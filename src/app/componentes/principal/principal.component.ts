@@ -14,6 +14,7 @@ export class PrincipalComponent implements OnInit {
   date2: string = dateformat('dd-MM-yyyy', new Date());
   noticiasObtenidas: noticia[] = [];
   numeroNoticias: number = 0;
+  noticiasComparar: any[] = [];
   numeroTotalNoticias: string = '0';
   noticiaActual: noticia = <noticia>{};
   constructor(private noticias: NoticiasService) { }
@@ -22,6 +23,7 @@ export class PrincipalComponent implements OnInit {
     $(document).ready(function () {
       //$('.sidenav').sidenav();
       $('#modal1').modal();
+      $('#modal2').modal();
       $('.datepicker').datepicker({
         container: document.getElementsByClassName('bg'),
         format: 'dd-mm-yyyy'
@@ -41,6 +43,7 @@ export class PrincipalComponent implements OnInit {
   }
   async ObtenerNoticiasDia() {
     const res = await this.noticias.NoticiasFecha(this.date2);
+    
     res.subscribe((data: respuestaNoticia) => {
       
       if (data.status == 'Error') {
@@ -87,6 +90,19 @@ export class PrincipalComponent implements OnInit {
         this.numeroTotalNoticias = <string>data.mensaje
       } else {
         this.numeroTotalNoticias = '--';
+      }
+
+    });
+  }
+  async CompararNoticia(id:string){
+    $('#modal2').modal('open');
+    const resp = await this.noticias.CompararNoticia(id);
+    resp.subscribe((data: respuestaNoticia) => {
+      if (data.status = 'Correcto') {
+        this.noticiasComparar = <any>data;
+        
+      } else {
+        M.toast({ html: `NO HAY NOTICIAS PARECIDAS` });
       }
 
     });

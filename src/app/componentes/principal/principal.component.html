@@ -14,6 +14,23 @@
   </div>
 </div>
 
+<div id="modal2" class="modal no-autoinit blue darken-4 white-text">
+  <div class="modal-content">
+    <h4 class="center-align">NOTICIAS SIMILARES</h4>
+    <ul class="collection ">
+      <li class="collection-item blue darken-4" *ngFor="let noti of noticiasComparar">
+        <a routerLink="/Estructurar/{{noti.id}}" class="white-text" target="_blank">
+          {{noti.titulo}}
+        </a>
+      </li>
+
+    </ul>
+  </div>
+  <div class="modal-footer blue darken-4 ">
+    <a class="modal-close waves-effect waves-green btn-flat white-text">Cerrar</a>
+  </div>
+</div>
+
 <div class="row container ">
   <div class="col s12">
     <button data-target="slide-out" class="sidenav-trigger btn  blue accent-4" style="margin-top:15px">
@@ -45,17 +62,22 @@
                 <br>
                 {{noticia.fuente}}
               </p>
-             
+
             </div>
           </div>
-          <div class="col s6">
+          <div class="col s4">
             <button (click)="MostrarNoticiaOriginal(noticia._id)" class="btn ">
               Previsualizar
             </button>
           </div>
-          <div class="col s6">
-            <button routerLink="/Estructurar/{{noticia._id}}" class="btn ">
+          <div class="col s4">
+            <a routerLink="/Estructurar/{{noticia._id}}" class="btn " style="width: 100%" target="_blank" >
               Estructurar
+            </a>
+          </div>
+          <div class="col s4">
+            <button (click)="CompararNoticia(noticia._id)" class="btn ">
+              comparar
             </button>
           </div>
         </div>

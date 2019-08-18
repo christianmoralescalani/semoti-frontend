@@ -5,17 +5,19 @@ import {environment} from '../../environments/environment.prod' ;
   providedIn: 'root'
 })
 export class NoticiasService {
-  NOTICIAS_FECHA_URL: string = `${environment.backend_url}/noticias/fecha/`;
+  NOTICIAS_FECHA_URL: string = `${environment.backend_url}/noticias/fecha`;
   NOTICIA_ORIGINAL: string = `${environment.backend_url}/noticias/noticiaOriginal/`;
   NOTICIA_FECHA_FUENTE: string = `${environment.backend_url}/noticias/`;
   CANTIDAD_NOTICIAS: string = `${environment.backend_url}/noticias/cantidadNoticias/`;
   NOTICIA_SEMANTICA_GENERAL: string = `${environment.backend_url}/semantica/`;
+  COMPARAR_NOTICIA:string = `${environment.backend_url}/semantica/compararNoticia`;
 
   constructor(private http: HttpClient) { }
 
   NoticiasFecha(fecha) {
 
-    return this.http.post(this.NOTICIAS_FECHA_URL + '05-08-2019', {
+    return this.http.post(this.NOTICIAS_FECHA_URL+`/${fecha}`, {
+      fecha: fecha,
       token: localStorage.getItem('token')
     });
   }
@@ -74,7 +76,13 @@ export class NoticiasService {
   CantidadNoticias() {
     return this.http.post(this.CANTIDAD_NOTICIAS, {
       token: localStorage.getItem('token')
-    })
+    });
+  }
+  CompararNoticia(id:string){
+    return this.http.post(this.COMPARAR_NOTICIA,{
+      token:localStorage.getItem('token'),
+      id:id
+    });
   }
 }
 export interface respuestaNoticia {
